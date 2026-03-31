@@ -1,0 +1,22 @@
+info:
+  name: Chat
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{base_url}}/chat"
+  body:
+    type: json
+    data: |-
+      {
+        "session_id": "{{session_id}}",
+        "question": "Quais são as top 3 seguradoras com mais contractos em 2024, duran?"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

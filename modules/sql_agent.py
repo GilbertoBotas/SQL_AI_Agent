@@ -1,5 +1,4 @@
 import os
-from dotenv import load_dotenv
 from typing import Optional
 from pydantic import BaseModel, Field
 from langchain_community.document_loaders import PyPDFLoader, DirectoryLoader
@@ -11,8 +10,9 @@ from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.messages import HumanMessage, AIMessage
 from langchain_core.runnables import RunnablePassthrough, RunnableLambda
 import warnings
+import modules.file_manager as file_manager
 
-load_dotenv()
+file_manager.validate_and_load_environment()
 
 warnings.filterwarnings("ignore", category=UserWarning, message="Pydantic serializer warnings")
 

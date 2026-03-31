@@ -1,0 +1,32 @@
+info:
+  name: Start Session
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/session/start"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: tests
+      code: |-
+        // Ensure the response is successful (optional, but good practice)
+        if (res.status === 200) {
+          // Parse the response body if it's not automatically parsed (usually it is)
+          const responseBody = res.body; 
+
+          // Extract the desired value (e.g., an access token) from the response object
+          const session_id = responseBody.session_id; // Adjust 'access_token' to your API's key name
+
+          // Set the environment variable
+          // The first argument is the variable name, the second is the value
+          bru.setEnvVar("session_id", session_id); 
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

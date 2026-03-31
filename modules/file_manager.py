@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def validate_environment():
+def validate_and_load_environment():
     """Validate that all required environment variables are set."""
     required_vars = [
         'SQL_USER_NAME',
@@ -21,9 +21,7 @@ def validate_environment():
         error_msg = "Missing required environment variables: " + ", ".join(missing)
         raise EnvironmentError(error_msg)
     
-    print("All required environment variables are set.") 
-        
-validate_environment()
+    print("All required environment variables are set.")
 
 def get_sql_credentials():
     """Get SQL credentials from environment variables."""

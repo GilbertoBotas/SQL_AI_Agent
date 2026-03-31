@@ -1,5 +1,5 @@
 # db.py
-import file_manager
+import modules.file_manager as file_manager
 from sqlalchemy import create_engine
 
 def get_engine():
