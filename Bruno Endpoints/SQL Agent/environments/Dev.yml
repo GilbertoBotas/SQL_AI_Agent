@@ -1,0 +1,6 @@
+name: Dev
+variables:
+  - name: base_url
+    value: http://0.0.0.0:8000
+  - name: session_id
+    value: f0e7b76f-53f3-4f75-9ab8-15f9346465d1

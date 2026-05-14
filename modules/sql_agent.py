@@ -1,7 +1,7 @@
 import os
 from typing import Optional
 from pydantic import BaseModel, Field
-from langchain_community.document_loaders import PyPDFLoader, DirectoryLoader
+from langchain_community.document_loaders import PyPDFLoader, DirectoryLoader, UnstructuredMarkdownLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_chroma import Chroma
@@ -66,7 +66,7 @@ class SQLAgent:
         # ── Vector store ──────────────────────────────────────────────────────
         if not os.path.exists(self.db_dir) or force_reload:
             print(f"Building vector store from {self.docs_dir}...")
-            loader = DirectoryLoader(self.docs_dir, glob="./*.pdf", loader_cls=PyPDFLoader)
+            loader = DirectoryLoader(self.docs_dir, glob="./*.md", loader_cls=UnstructuredMarkdownLoader)
             documents = loader.load()
             splits = RecursiveCharacterTextSplitter(
                 chunk_size=1000, chunk_overlap=200

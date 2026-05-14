@@ -1,0 +1,22 @@
+info:
+  name: Chat
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{base_url}}/chat"
+  body:
+    type: json
+    data: |-
+      {
+        "session_id": "{{session_id}}",
+        "question": "Qual foi a minha ultima pergunta?"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
